@@ -5,6 +5,7 @@ import { useResumeStore } from '@/lib/resumeStore'
 import ResumeForm from '@/components/ResumeForm'
 import ResumePreview from '@/components/ResumePreview'
 import ATSScore from '@/components/ATSScore'
+import TemplateSelector from '@/components/TemplateSelector'
 import styles from './builder.module.css'
 
 export default function BuilderPage() {
@@ -35,6 +36,7 @@ export default function BuilderPage() {
         </div>
         <div className={styles.previewPanel}>
           <div className={styles.previewSticky}>
+            <TemplateSelector />
             <ATSScore />
             <h3>Live Preview</h3>
             <ResumePreview />

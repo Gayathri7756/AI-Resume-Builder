@@ -54,7 +54,7 @@ export default function ATSScore() {
 
       {suggestions.length > 0 && (
         <div className={styles.suggestions}>
-          <h4>Suggestions</h4>
+          <h4>Top 3 Improvements</h4>
           <ul>
             {suggestions.map((suggestion, index) => (
               <li key={index}>{suggestion}</li>

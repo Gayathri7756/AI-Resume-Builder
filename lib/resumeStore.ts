@@ -43,6 +43,8 @@ export interface Links {
   portfolio: string
 }
 
+export type TemplateType = 'classic' | 'modern' | 'minimal'
+
 interface ResumeStore {
   personalInfo: PersonalInfo
   summary: string
@@ -51,6 +53,7 @@ interface ResumeStore {
   projects: Project[]
   skills: string
   links: Links
+  template: TemplateType
   
   setPersonalInfo: (info: PersonalInfo) => void
   setSummary: (summary: string) => void
@@ -65,6 +68,7 @@ interface ResumeStore {
   removeProject: (id: string) => void
   setSkills: (skills: string) => void
   setLinks: (links: Links) => void
+  setTemplate: (template: TemplateType) => void
   loadSampleData: () => void
   reset: () => void
 }
@@ -85,7 +89,8 @@ const initialState = {
     github: '',
     linkedin: '',
     portfolio: ''
-  }
+  },
+  template: 'classic' as TemplateType
 }
 
 export const useResumeStore = create<ResumeStore>()(
@@ -128,6 +133,7 @@ export const useResumeStore = create<ResumeStore>()(
       
       setSkills: (skills) => set({ skills }),
       setLinks: (links) => set({ links }),
+      setTemplate: (template) => set({ template }),
       
       loadSampleData: () => set({
         personalInfo: {

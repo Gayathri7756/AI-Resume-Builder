@@ -1,0 +1,37 @@
+/* Modern Template - Clean, sans-serif, minimal borders */
+.resume {
+  background: white;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #000;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: #000;
+  font-weight: 700;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.section h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-family: 'Arial', sans-serif;
+}

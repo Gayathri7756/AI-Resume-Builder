@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import ResumePreview from '@/components/ResumePreview'
+import TemplateSelector from '@/components/TemplateSelector'
 import styles from './preview.module.css'
 
 export default function PreviewPage() {
@@ -23,6 +24,9 @@ export default function PreviewPage() {
           <Link href="/builder" className={styles.btnBack}>
             ← Back to Builder
           </Link>
+          <div className={styles.templateWrapper}>
+            <TemplateSelector />
+          </div>
         </div>
         <div className={styles.previewContainer}>
           <ResumePreview />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useResumeStore } from '@/lib/resumeStore'
+import BulletGuidance from './BulletGuidance'
 import styles from './ResumeForm.module.css'
 
 export default function ResumeForm() {
@@ -194,6 +195,7 @@ export default function ResumeForm() {
               className={styles.textarea}
               rows={3}
             />
+            <BulletGuidance text={exp.description} />
             <button
               onClick={() => removeExperience(exp.id)}
               className={styles.btnRemove}
@@ -237,6 +239,7 @@ export default function ResumeForm() {
               className={styles.textarea}
               rows={2}
             />
+            <BulletGuidance text={proj.description} />
             <input
               type="text"
               placeholder="Technologies Used"

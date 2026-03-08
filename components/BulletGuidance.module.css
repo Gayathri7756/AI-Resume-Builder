@@ -1,0 +1,12 @@
+.guidance {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #8B6914;
+  font-style: italic;
+}
