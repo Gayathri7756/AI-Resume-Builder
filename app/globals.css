@@ -63,3 +63,69 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  /* Hide all UI elements */
+  nav,
+  header:not(.resume-header),
+  footer,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Show only resume content */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Resume styling for print */
+  .resume-preview {
+    background: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Prevent page breaks inside elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Ensure sections don't break awkwardly */
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Remove colors for print */
+  * {
+    color: black !important;
+    background: white !important;
+    border-color: black !important;
+  }
+
+  /* Clean spacing */
+  .resume-preview * {
+    line-height: 1.5 !important;
+  }
+}

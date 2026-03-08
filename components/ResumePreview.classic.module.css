@@ -36,3 +36,25 @@
   padding-bottom: 4px;
   font-family: 'Times New Roman', serif;
 }
+
+/* Print-specific styles */
+@media print {
+  .resume {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    page-break-after: avoid;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  .item {
+    page-break-inside: avoid;
+  }
+}

@@ -145,3 +145,29 @@
   color: #666;
   font-style: italic;
 }
+
+/* Print-specific styles */
+@media print {
+  .resume {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .empty {
+    display: none;
+  }
+
+  .header {
+    page-break-after: avoid;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  .item {
+    page-break-inside: avoid;
+  }
+}
