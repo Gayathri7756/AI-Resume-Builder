@@ -15,10 +15,13 @@ export default function ResumeForm() {
     setPersonalInfo,
     setSummary,
     addEducation,
+    updateEducation,
     removeEducation,
     addExperience,
+    updateExperience,
     removeExperience,
     addProject,
+    updateProject,
     removeProject,
     setSkills,
     setLinks
@@ -78,6 +81,45 @@ export default function ResumeForm() {
         <h2>Education</h2>
         {education.map((edu) => (
           <div key={edu.id} className={styles.entry}>
+            <input
+              type="text"
+              placeholder="School"
+              value={edu.school}
+              onChange={(e) => updateEducation(edu.id, { school: e.target.value })}
+              className={styles.input}
+            />
+            <div className={styles.grid}>
+              <input
+                type="text"
+                placeholder="Degree"
+                value={edu.degree}
+                onChange={(e) => updateEducation(edu.id, { degree: e.target.value })}
+                className={styles.input}
+              />
+              <input
+                type="text"
+                placeholder="Field of Study"
+                value={edu.field}
+                onChange={(e) => updateEducation(edu.id, { field: e.target.value })}
+                className={styles.input}
+              />
+            </div>
+            <div className={styles.grid}>
+              <input
+                type="text"
+                placeholder="Start Year"
+                value={edu.startDate}
+                onChange={(e) => updateEducation(edu.id, { startDate: e.target.value })}
+                className={styles.input}
+              />
+              <input
+                type="text"
+                placeholder="End Year"
+                value={edu.endDate}
+                onChange={(e) => updateEducation(edu.id, { endDate: e.target.value })}
+                className={styles.input}
+              />
+            </div>
             <button
               onClick={() => removeEducation(edu.id)}
               className={styles.btnRemove}
@@ -106,6 +148,52 @@ export default function ResumeForm() {
         <h2>Work Experience</h2>
         {experience.map((exp) => (
           <div key={exp.id} className={styles.entry}>
+            <input
+              type="text"
+              placeholder="Position"
+              value={exp.position}
+              onChange={(e) => updateExperience(exp.id, { position: e.target.value })}
+              className={styles.input}
+            />
+            <div className={styles.grid}>
+              <input
+                type="text"
+                placeholder="Company"
+                value={exp.company}
+                onChange={(e) => updateExperience(exp.id, { company: e.target.value })}
+                className={styles.input}
+              />
+              <input
+                type="text"
+                placeholder="Location"
+                value={exp.location}
+                onChange={(e) => updateExperience(exp.id, { location: e.target.value })}
+                className={styles.input}
+              />
+            </div>
+            <div className={styles.grid}>
+              <input
+                type="text"
+                placeholder="Start Year"
+                value={exp.startDate}
+                onChange={(e) => updateExperience(exp.id, { startDate: e.target.value })}
+                className={styles.input}
+              />
+              <input
+                type="text"
+                placeholder="End Year (or Present)"
+                value={exp.endDate}
+                onChange={(e) => updateExperience(exp.id, { endDate: e.target.value })}
+                className={styles.input}
+              />
+            </div>
+            <textarea
+              placeholder="Description (include numbers and metrics for better ATS score)"
+              value={exp.description}
+              onChange={(e) => updateExperience(exp.id, { description: e.target.value })}
+              className={styles.textarea}
+              rows={3}
+            />
             <button
               onClick={() => removeExperience(exp.id)}
               className={styles.btnRemove}
@@ -135,6 +223,34 @@ export default function ResumeForm() {
         <h2>Projects</h2>
         {projects.map((proj) => (
           <div key={proj.id} className={styles.entry}>
+            <input
+              type="text"
+              placeholder="Project Name"
+              value={proj.name}
+              onChange={(e) => updateProject(proj.id, { name: e.target.value })}
+              className={styles.input}
+            />
+            <textarea
+              placeholder="Description (include impact and metrics)"
+              value={proj.description}
+              onChange={(e) => updateProject(proj.id, { description: e.target.value })}
+              className={styles.textarea}
+              rows={2}
+            />
+            <input
+              type="text"
+              placeholder="Technologies Used"
+              value={proj.technologies}
+              onChange={(e) => updateProject(proj.id, { technologies: e.target.value })}
+              className={styles.input}
+            />
+            <input
+              type="text"
+              placeholder="Project Link (optional)"
+              value={proj.link}
+              onChange={(e) => updateProject(proj.id, { link: e.target.value })}
+              className={styles.input}
+            />
             <button
               onClick={() => removeProject(proj.id)}
               className={styles.btnRemove}
@@ -162,12 +278,12 @@ export default function ResumeForm() {
         <h2>Skills</h2>
         <input
           type="text"
-          placeholder="JavaScript, Python, React, Node.js..."
+          placeholder="JavaScript, Python, React, Node.js, SQL, AWS, Docker, Git..."
           value={skills}
           onChange={(e) => setSkills(e.target.value)}
           className={styles.input}
         />
-        <p className={styles.hint}>Separate skills with commas</p>
+        <p className={styles.hint}>Separate skills with commas (aim for 8+ skills)</p>
       </section>
 
       {/* Links */}

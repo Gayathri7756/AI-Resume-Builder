@@ -172,7 +172,7 @@ export const useResumeStore = create<ResumeStore>()(
       reset: () => set(initialState)
     }),
     {
-      name: 'resume-storage'
+      name: 'resumeBuilderData'
     }
   )
 )
