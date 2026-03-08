@@ -1,0 +1,54 @@
+.content {
+  max-width: 900px;
+}
+
+.content h1 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--accent);
+}
+
+.section p {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.8;
+}
+
+.section ul, .section ol {
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.8;
+}
+
+.instructions {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+}
+
+.instructions h4 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--accent);
+}
+
+.instructions ol {
+  margin-left: var(--spacing-md);
+}
+
+.instructions li {
+  margin-bottom: var(--spacing-xs);
+}

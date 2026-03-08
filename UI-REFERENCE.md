@@ -1,0 +1,228 @@
+# UI Reference Guide
+
+Visual reference for the AI Resume Builder interface.
+
+## Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Top Bar (64px height, white background)                       │
+│  ┌──────────────┬──────────────────────┬──────────────────┐   │
+│  │ AI Resume    │  Project 3 — Step    │  [In Progress]   │   │
+│  │ Builder      │  X of 8              │                  │   │
+│  └──────────────┴──────────────────────┴──────────────────┘   │
+├─────────────────────────────────────────────────────────────────┤
+│  Context Header (white background)                              │
+│  Step X: [Step Name]                                            │
+├──────────────────────────────────┬──────────────────────────────┤
+│                                  │                              │
+│  Main Workspace (70%)            │  Build Panel (30%)           │
+│  Off-white background            │  White background            │
+│                                  │                              │
+│  [Step Content]                  │  Copy This Into Lovable      │
+│  - Headings (Crimson Text)       │  ┌────────────────────────┐ │
+│  - Body text (Inter)             │  │ [Artifact Content]     │ │
+│  - Lists                         │  │                        │ │
+│  - Instructions box              │  └────────────────────────┘ │
+│                                  │  [Copy Button]               │
+│                                  │                              │
+│                                  │  Build in Lovable →          │
+│                                  │                              │
+│                                  │  Upload Result               │
+│                                  │  [📎 Add Screenshot]         │
+│                                  │                              │
+├──────────────────────────────────┴──────────────────────────────┤
+│  Footer (64px height, white background)                         │
+│  [← Previous]    Step X/8    [Next →]                          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Color Palette
+
+```
+Background (Off-white):  ████  #F7F6F3
+Secondary (White):       ████  #FFFFFF
+Accent (Deep Red):       ████  #8B0000
+Text Primary:            ████  #1A1A1A
+Text Secondary:          ████  #666666
+Border:                  ████  #E0DED8
+```
+
+## Typography Examples
+
+### Headings (Crimson Text, Serif)
+```
+H1: Define the Problem (2.5rem, 600 weight)
+H2: Market Analysis (2rem, 600 weight)
+H3: Competitive Landscape (1.5rem, 600 weight)
+```
+
+### Body Text (Inter, Sans-serif)
+```
+Regular paragraph text (1rem, 400 weight)
+Button labels (0.875rem, 500 weight)
+Small labels (0.75rem, 500 weight, uppercase)
+```
+
+## Component States
+
+### Next Button States
+
+**Disabled** (artifact not uploaded):
+```
+┌──────────────┐
+│   Next →     │  Gray background
+└──────────────┘  Opacity 50%
+                  Cursor: not-allowed
+```
+
+**Enabled** (artifact uploaded):
+```
+┌──────────────┐
+│   Next →     │  Deep red (#8B0000)
+└──────────────┘  Cursor: pointer
+                  Hover: Darker red (#6B0000)
+```
+
+### Upload Button States
+
+**Before Upload**:
+```
+┌──────────────────────┐
+│ 📎 Add Screenshot    │  Light background
+└──────────────────────┘  Border: 1px solid
+```
+
+**After Upload**:
+```
+┌──────────────────────┐
+│ ✓ It Worked          │  Light background
+└──────────────────────┘  + Green badge below
+┌──────────────────────┐
+│ Artifact Uploaded    │  Green background
+└──────────────────────┘
+```
+
+### Copy Button States
+
+**Default**:
+```
+┌──────────────┐
+│   Copy       │  Dark background
+└──────────────┘  White text
+```
+
+**After Click**:
+```
+┌──────────────┐
+│ ✓ Copied!    │  Dark background
+└──────────────┘  Shows for 2 seconds
+```
+
+## Proof Page Layout
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    AI Resume Builder                        │
+│                  Project 3 - Final Proof                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Step Progress                                              │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐                      │
+│  │  ✓   │ │  ✓   │ │  ✓   │ │  ✓   │                      │
+│  │ Step │ │ Step │ │ Step │ │ Step │                      │
+│  │  1   │ │  2   │ │  3   │ │  4   │                      │
+│  └──────┘ └──────┘ └──────┘ └──────┘                      │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐                      │
+│  │  ✓   │ │  ✓   │ │  ✓   │ │  ✓   │                      │
+│  │ Step │ │ Step │ │ Step │ │ Step │                      │
+│  │  5   │ │  6   │ │  7   │ │  8   │                      │
+│  └──────┘ └──────┘ └──────┘ └──────┘                      │
+│                                                             │
+│  Project Links                                              │
+│  Lovable Project Link                                       │
+│  [________________________________]                         │
+│                                                             │
+│  GitHub Repository Link                                     │
+│  [________________________________]                         │
+│                                                             │
+│  Live Deployment Link                                       │
+│  [________________________________]                         │
+│                                                             │
+│  Final Submission                                           │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ AI Resume Builder - Project 3 Submission            │   │
+│  │                                                     │   │
+│  │ Project Links:                                      │   │
+│  │ - Lovable: [link]                                   │   │
+│  │ - GitHub: [link]                                    │   │
+│  │ - Live Deploy: [link]                               │   │
+│  │                                                     │   │
+│  │ Completed Steps:                                    │   │
+│  │ ✓ Step 1: Problem Definition                        │   │
+│  │ ✓ Step 2: Market Research                           │   │
+│  │ ...                                                 │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│  [Copy Final Submission]                                    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Spacing Examples
+
+### Section Spacing
+```
+Heading
+↕ 24px (--spacing-md)
+Paragraph text
+↕ 24px (--spacing-md)
+Next section
+```
+
+### Component Padding
+```
+Top Bar:     16px vertical, 40px horizontal
+Build Panel: 40px all sides
+Footer:      16px vertical, 40px horizontal
+Cards:       24px all sides
+```
+
+### Button Spacing
+```
+Button padding: 10px vertical, 24px horizontal
+Button gap:     16px between buttons
+```
+
+## Responsive Breakpoints
+
+### Desktop (1920px)
+- Workspace: 70% (1344px)
+- Build Panel: 30% (576px)
+
+### Laptop (1440px)
+- Workspace: 70% (1008px)
+- Build Panel: 30% (432px)
+
+### Tablet (768px)
+- Stack vertically
+- Workspace: 100%
+- Build Panel: 100%
+
+## Accessibility
+
+- All buttons have hover states
+- Disabled states clearly indicated
+- Color contrast meets WCAG AA
+- Focus states visible
+- Semantic HTML structure
+
+## Animation
+
+- Button hover: 0.2s ease
+- Copy feedback: 2s duration
+- Page transitions: Instant (Next.js)
+
+---
+
+Use this reference to verify your implementation matches the design system.

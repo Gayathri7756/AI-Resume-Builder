@@ -1,0 +1,120 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+}
+
+.topBarLeft {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topBarCenter {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+}
+
+.statusBadge {
+  padding: 6px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contextHeader {
+  padding: var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.contextHeader h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.workspace {
+  flex: 0 0 70%;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.buildPanel {
+  flex: 0 0 30%;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.proofFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  height: 64px;
+}
+
+.footerCenter {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.btnPrimary {
+  padding: 10px 24px;
+  background: var(--accent);
+  color: white;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: #6B0000;
+}
+
+.btnSecondary {
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: var(--bg-primary);
+}
