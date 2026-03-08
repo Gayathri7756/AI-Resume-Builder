@@ -49,7 +49,7 @@ export function calculateATSScore(
   }
 
   // Skills: at least 8 items (+15 points)
-  const totalSkills = skills.technical.length + skills.soft.length + skills.tools.length
+  const totalSkills = (skills?.technical?.length || 0) + (skills?.soft?.length || 0) + (skills?.tools?.length || 0)
   if (totalSkills >= 8) {
     score += 15
   } else {

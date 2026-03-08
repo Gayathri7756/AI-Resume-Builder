@@ -36,19 +36,22 @@ export default function SkillsSection() {
         </button>
       </div>
 
-      {categories.map(({ key, label }) => (
-        <div key={key} className={styles.category}>
-          <label className={styles.label}>
-            {label} ({skills[key].length})
-          </label>
-          <TagInput
-            tags={skills[key]}
-            onAdd={(skill) => addSkill(key, skill)}
-            onRemove={(skill) => removeSkill(key, skill)}
-            placeholder={`Add ${label.toLowerCase()}...`}
-          />
-        </div>
-      ))}
+      {categories.map(({ key, label }) => {
+        const skillArray = skills[key] || []
+        return (
+          <div key={key} className={styles.category}>
+            <label className={styles.label}>
+              {label} ({skillArray.length})
+            </label>
+            <TagInput
+              tags={skillArray}
+              onAdd={(skill) => addSkill(key, skill)}
+              onRemove={(skill) => removeSkill(key, skill)}
+              placeholder={`Add ${label.toLowerCase()}...`}
+            />
+          </div>
+        )
+      })}
     </section>
   )
 }

@@ -91,12 +91,12 @@ export default function ProjectsSection() {
                 <div className={styles.field}>
                   <label>Tech Stack</label>
                   <TagInput
-                    tags={project.technologies}
+                    tags={project.technologies || []}
                     onAdd={(tech) => updateProject(project.id, {
-                      technologies: [...project.technologies, tech]
+                      technologies: [...(project.technologies || []), tech]
                     })}
                     onRemove={(tech) => updateProject(project.id, {
-                      technologies: project.technologies.filter(t => t !== tech)
+                      technologies: (project.technologies || []).filter(t => t !== tech)
                     })}
                     placeholder="Add technology and press Enter..."
                   />

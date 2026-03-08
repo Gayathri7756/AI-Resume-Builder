@@ -125,7 +125,7 @@ export default function ResumePreview() {
                 <strong>{proj.name || 'Project Name'}</strong>
               </div>
               {proj.description && <p>{proj.description}</p>}
-              {proj.technologies && proj.technologies.length > 0 && (
+              {proj.technologies && Array.isArray(proj.technologies) && proj.technologies.length > 0 && (
                 <div className={styles.techStack || classicStyles.techStack}>
                   {proj.technologies.map((tech, idx) => (
                     <span key={idx} className={styles.pill || classicStyles.pill}>
@@ -154,10 +154,10 @@ export default function ResumePreview() {
       )}
 
       {/* Skills */}
-      {(skills.technical.length > 0 || skills.soft.length > 0 || skills.tools.length > 0) && (
+      {(skills?.technical?.length > 0 || skills?.soft?.length > 0 || skills?.tools?.length > 0) && (
         <section className={styles.section || classicStyles.section}>
           <h2>Skills</h2>
-          {skills.technical.length > 0 && (
+          {skills.technical?.length > 0 && (
             <div className={styles.skillCategory || classicStyles.skillCategory}>
               <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
                 Technical Skills:
@@ -171,7 +171,7 @@ export default function ResumePreview() {
               </div>
             </div>
           )}
-          {skills.soft.length > 0 && (
+          {skills.soft?.length > 0 && (
             <div className={styles.skillCategory || classicStyles.skillCategory}>
               <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
                 Soft Skills:
@@ -185,7 +185,7 @@ export default function ResumePreview() {
               </div>
             </div>
           )}
-          {skills.tools.length > 0 && (
+          {skills.tools?.length > 0 && (
             <div className={styles.skillCategory || classicStyles.skillCategory}>
               <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
                 Tools & Technologies:
