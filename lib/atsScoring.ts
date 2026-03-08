@@ -34,24 +34,24 @@ export function calculateATSScore(
     suggestions.push('Shorten your summary to 40–120 words.')
   }
 
-  // Projects: at least 2 (+10 points)
+  // Projects: at least 2 (+15 points)
   if (projects.length >= 2) {
-    score += 10
+    score += 15
   } else {
     suggestions.push('Add at least 2 projects.')
   }
 
-  // Experience: at least 1 entry (+10 points)
+  // Experience: at least 1 entry (+15 points)
   if (experience.length >= 1) {
-    score += 10
+    score += 15
   } else {
     suggestions.push('Add at least 1 work experience entry.')
   }
 
-  // Skills: at least 8 items (+10 points)
+  // Skills: at least 8 items (+15 points)
   const skillsList = skills.split(',').map(s => s.trim()).filter(Boolean)
   if (skillsList.length >= 8) {
-    score += 10
+    score += 15
   } else {
     suggestions.push('Add more skills (target 8+).')
   }
@@ -74,13 +74,13 @@ export function calculateATSScore(
     suggestions.push('Add measurable impact (numbers) in bullets.')
   }
 
-  // Education: complete fields (+10 points)
+  // Education: complete fields (+15 points)
   const hasCompleteEducation = education.some(edu => 
     edu.school && edu.degree && edu.field && edu.startDate && edu.endDate
   )
   
   if (hasCompleteEducation) {
-    score += 10
+    score += 15
   } else if (education.length > 0) {
     suggestions.push('Complete all education fields.')
   } else {
