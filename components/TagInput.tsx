@@ -12,11 +12,14 @@ interface TagInputProps {
 
 export default function TagInput({ tags, onAdd, onRemove, placeholder = 'Type and press Enter' }: TagInputProps) {
   const [input, setInput] = useState('')
+  
+  // Ensure tags is always an array
+  const tagArray = Array.isArray(tags) ? tags : []
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && input.trim()) {
       e.preventDefault()
-      if (!tags.includes(input.trim())) {
+      if (!tagArray.includes(input.trim())) {
         onAdd(input.trim())
       }
       setInput('')
@@ -26,7 +29,7 @@ export default function TagInput({ tags, onAdd, onRemove, placeholder = 'Type an
   return (
     <div className={styles.container}>
       <div className={styles.tags}>
-        {tags.map((tag) => (
+        {tagArray.map((tag) => (
           <span key={tag} className={styles.tag}>
             {tag}
             <button

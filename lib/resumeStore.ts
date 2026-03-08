@@ -217,7 +217,53 @@ export const useResumeStore = create<ResumeStore>()(
       reset: () => set(initialState)
     }),
     {
-      name: 'resumeBuilderData'
+      name: 'resumeBuilderData',
+      version: 1,
+      migrate: (persistedState: any, version: number) => {
+        // Migration logic to handle old data structure
+        if (version === 0 || !persistedState) {
+          return initialState
+        }
+        
+        // Ensure skills is an object with arrays
+        if (typeof persistedState.skills === 'string') {
+          const skillsArray = persistedState.skills.split(',').map((s: string) => s.trim()).filter(Boolean)
+          persistedState.skills = {
+            technical: skillsArray,
+            soft: [],
+            tools: []
+          }
+        } else if (!persistedState.skills || typeof persistedState.skills !== 'object') {
+          persistedState.skills = {
+            technical: [],
+            soft: [],
+            tools: []
+          }
+        } else {
+          // Ensure all skill categories exist
+          persistedState.skills = {
+            technical: persistedState.skills.technical || [],
+            soft: persistedState.skills.soft || [],
+            tools: persistedState.skills.tools || []
+          }
+        }
+        
+        // Ensure projects have technologies as array
+        if (persistedState.projects && Array.isArray(persistedState.projects)) {
+          persistedState.projects = persistedState.projects.map((proj: any) => ({
+            ...proj,
+            technologies: Array.isArray(proj.technologies) 
+              ? proj.technologies 
+              : (typeof proj.technologies === 'string' 
+                  ? proj.technologies.split(',').map((t: string) => t.trim()).filter(Boolean)
+                  : []),
+            liveUrl: proj.liveUrl || proj.link || '',
+            githubUrl: proj.githubUrl || ''
+          }))
+        }
+        
+        return persistedState
+      }
     }
   )
 )

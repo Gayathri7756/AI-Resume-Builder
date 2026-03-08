@@ -9,7 +9,14 @@ import TemplateSelector from '@/components/TemplateSelector'
 import styles from './builder.module.css'
 
 export default function BuilderPage() {
-  const { loadSampleData } = useResumeStore()
+  const { loadSampleData, reset } = useResumeStore()
+
+  const handleReset = () => {
+    if (confirm('Are you sure you want to clear all data and start fresh?')) {
+      reset()
+      window.location.reload()
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -27,6 +34,9 @@ export default function BuilderPage() {
       <div className={styles.toolbar}>
         <button onClick={loadSampleData} className={styles.btnSample}>
           Load Sample Data
+        </button>
+        <button onClick={handleReset} className={styles.btnSample} style={{ marginLeft: '8px', background: '#666' }}>
+          Clear All Data
         </button>
       </div>
 
