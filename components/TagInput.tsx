@@ -19,8 +19,11 @@ export default function TagInput({ tags, onAdd, onRemove, placeholder = 'Type an
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && input.trim()) {
       e.preventDefault()
-      if (!tagArray.includes(input.trim())) {
-        onAdd(input.trim())
+      const trimmedInput = input.trim()
+      // Case-insensitive duplicate check
+      const isDuplicate = tagArray.some(tag => tag.toLowerCase() === trimmedInput.toLowerCase())
+      if (!isDuplicate) {
+        onAdd(trimmedInput)
       }
       setInput('')
     }
