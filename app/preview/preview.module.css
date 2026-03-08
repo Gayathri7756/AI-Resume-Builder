@@ -66,14 +66,27 @@
 }
 
 .warning {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: rgba(139, 0, 0, 0.1);
-  border-left: 4px solid var(--accent);
+  padding: var(--spacing-md) var(--spacing-md);
+  background: rgba(139, 0, 0, 0.15);
+  border: 2px solid var(--accent);
+  border-left: 6px solid var(--accent);
   color: var(--accent);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
   margin-bottom: var(--spacing-md);
   border-radius: 4px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .exportButtons {

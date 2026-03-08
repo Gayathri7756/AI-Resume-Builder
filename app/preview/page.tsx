@@ -27,11 +27,16 @@ export default function PreviewPage() {
     
     if (!isComplete) {
       setShowWarning(true)
-      setTimeout(() => setShowWarning(false), 5000)
+      // Show warning for a moment before printing
+      setTimeout(() => {
+        triggerPrint()
+        // Keep warning visible for 5 seconds total
+        setTimeout(() => setShowWarning(false), 4000)
+      }, 1000)
+    } else {
+      // No warnings, print immediately
+      triggerPrint()
     }
-    
-    // Allow print even with warnings
-    setTimeout(() => triggerPrint(), 100)
   }
 
   const handleCopyText = async () => {
