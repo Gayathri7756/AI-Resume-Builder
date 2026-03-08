@@ -1,4 +1,4 @@
-import { PersonalInfo, Education, Experience, Project, Links } from './resumeStore'
+import { PersonalInfo, Education, Experience, Project, Links, SkillCategories } from './resumeStore'
 
 export function generatePlainTextResume(
   personalInfo: PersonalInfo,
@@ -6,7 +6,7 @@ export function generatePlainTextResume(
   education: Education[],
   experience: Experience[],
   projects: Project[],
-  skills: string,
+  skills: SkillCategories,
   links: Links
 ): string {
   let text = ''
@@ -99,8 +99,9 @@ export function generatePlainTextResume(
     projects.forEach(proj => {
       if (proj.name) {
         text += `${proj.name}`
-        if (proj.link) {
-          text += ` | ${proj.link}`
+        if (proj.liveUrl || proj.githubUrl) {
+          const links = [proj.liveUrl, proj.githubUrl].filter(Boolean)
+          text += ` | ${links.join(' | ')}`
         }
         text += '\n'
         
@@ -108,8 +109,8 @@ export function generatePlainTextResume(
           text += `${proj.description}\n`
         }
         
-        if (proj.technologies) {
-          text += `Technologies: ${proj.technologies}\n`
+        if (proj.technologies && proj.technologies.length > 0) {
+          text += `Technologies: ${proj.technologies.join(', ')}\n`
         }
         text += '\n'
       }
@@ -117,9 +118,19 @@ export function generatePlainTextResume(
   }
 
   // Skills
-  if (skills) {
+  const hasSkills = skills.technical.length > 0 || skills.soft.length > 0 || skills.tools.length > 0
+  if (hasSkills) {
     text += 'SKILLS\n'
-    text += `${skills}\n\n`
+    if (skills.technical.length > 0) {
+      text += `Technical Skills: ${skills.technical.join(', ')}\n`
+    }
+    if (skills.soft.length > 0) {
+      text += `Soft Skills: ${skills.soft.join(', ')}\n`
+    }
+    if (skills.tools.length > 0) {
+      text += `Tools & Technologies: ${skills.tools.join(', ')}\n`
+    }
+    text += '\n'
   }
 
   return text.trim()

@@ -1,4 +1,4 @@
-import { PersonalInfo, Education, Experience, Project, Links } from './resumeStore'
+import { PersonalInfo, Education, Experience, Project, Links, SkillCategories } from './resumeStore'
 
 export interface ATSResult {
   score: number
@@ -18,7 +18,7 @@ export function calculateATSScore(
   education: Education[],
   experience: Experience[],
   projects: Project[],
-  skills: string,
+  skills: SkillCategories,
   links: Links
 ): ATSResult {
   let score = 0
@@ -49,8 +49,8 @@ export function calculateATSScore(
   }
 
   // Skills: at least 8 items (+15 points)
-  const skillsList = skills.split(',').map(s => s.trim()).filter(Boolean)
-  if (skillsList.length >= 8) {
+  const totalSkills = skills.technical.length + skills.soft.length + skills.tools.length
+  if (totalSkills >= 8) {
     score += 15
   } else {
     suggestions.push('Add more skills (target 8+).')

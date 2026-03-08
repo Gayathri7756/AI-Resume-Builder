@@ -1,0 +1,48 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--accent);
+}
+
+.suggestBtn {
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.suggestBtn:hover:not(:disabled) {
+  background: #6B0000;
+}
+
+.suggestBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}

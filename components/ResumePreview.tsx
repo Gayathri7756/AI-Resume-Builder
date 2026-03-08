@@ -123,11 +123,30 @@ export default function ResumePreview() {
             <div key={proj.id} className={styles.item || classicStyles.item}>
               <div className={styles.itemHeader || classicStyles.itemHeader}>
                 <strong>{proj.name || 'Project Name'}</strong>
-                {proj.link && <span className={styles.link || classicStyles.link}>{proj.link}</span>}
               </div>
               {proj.description && <p>{proj.description}</p>}
-              {proj.technologies && (
-                <p className={styles.tech || classicStyles.tech}>{proj.technologies}</p>
+              {proj.technologies && proj.technologies.length > 0 && (
+                <div className={styles.techStack || classicStyles.techStack}>
+                  {proj.technologies.map((tech, idx) => (
+                    <span key={idx} className={styles.pill || classicStyles.pill}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {(proj.liveUrl || proj.githubUrl) && (
+                <div className={styles.projectLinks || classicStyles.projectLinks}>
+                  {proj.liveUrl && (
+                    <span className={styles.linkIcon || classicStyles.linkIcon}>
+                      🔗 {proj.liveUrl}
+                    </span>
+                  )}
+                  {proj.githubUrl && (
+                    <span className={styles.linkIcon || classicStyles.linkIcon}>
+                      💻 {proj.githubUrl}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
           ))}
@@ -135,10 +154,51 @@ export default function ResumePreview() {
       )}
 
       {/* Skills */}
-      {skills && (
+      {(skills.technical.length > 0 || skills.soft.length > 0 || skills.tools.length > 0) && (
         <section className={styles.section || classicStyles.section}>
           <h2>Skills</h2>
-          <p>{skills}</p>
+          {skills.technical.length > 0 && (
+            <div className={styles.skillCategory || classicStyles.skillCategory}>
+              <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
+                Technical Skills:
+              </strong>
+              <div className={styles.skillPills || classicStyles.skillPills}>
+                {skills.technical.map((skill, idx) => (
+                  <span key={idx} className={styles.pill || classicStyles.pill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {skills.soft.length > 0 && (
+            <div className={styles.skillCategory || classicStyles.skillCategory}>
+              <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
+                Soft Skills:
+              </strong>
+              <div className={styles.skillPills || classicStyles.skillPills}>
+                {skills.soft.map((skill, idx) => (
+                  <span key={idx} className={styles.pill || classicStyles.pill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {skills.tools.length > 0 && (
+            <div className={styles.skillCategory || classicStyles.skillCategory}>
+              <strong className={styles.categoryLabel || classicStyles.categoryLabel}>
+                Tools & Technologies:
+              </strong>
+              <div className={styles.skillPills || classicStyles.skillPills}>
+                {skills.tools.map((skill, idx) => (
+                  <span key={idx} className={styles.pill || classicStyles.pill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
       )}
     </div>

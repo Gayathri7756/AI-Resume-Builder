@@ -171,3 +171,51 @@
     page-break-inside: avoid;
   }
 }
+
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  color: #333;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.techStack {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.projectLinks {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.linkIcon {
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.skillCategory {
+  margin-bottom: 12px;
+}
+
+.categoryLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.skillPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

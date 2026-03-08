@@ -33,8 +33,15 @@ export interface Project {
   id: string
   name: string
   description: string
-  technologies: string
-  link: string
+  technologies: string[]
+  liveUrl: string
+  githubUrl: string
+}
+
+export interface SkillCategories {
+  technical: string[]
+  soft: string[]
+  tools: string[]
 }
 
 export interface Links {
@@ -51,7 +58,7 @@ interface ResumeStore {
   education: Education[]
   experience: Experience[]
   projects: Project[]
-  skills: string
+  skills: SkillCategories
   links: Links
   template: TemplateType
   
@@ -66,7 +73,9 @@ interface ResumeStore {
   addProject: (proj: Project) => void
   updateProject: (id: string, proj: Partial<Project>) => void
   removeProject: (id: string) => void
-  setSkills: (skills: string) => void
+  addSkill: (category: keyof SkillCategories, skill: string) => void
+  removeSkill: (category: keyof SkillCategories, skill: string) => void
+  suggestSkills: () => void
   setLinks: (links: Links) => void
   setTemplate: (template: TemplateType) => void
   loadSampleData: () => void
@@ -84,7 +93,11 @@ const initialState = {
   education: [],
   experience: [],
   projects: [],
-  skills: '',
+  skills: {
+    technical: [],
+    soft: [],
+    tools: []
+  },
   links: {
     github: '',
     linkedin: '',
@@ -131,7 +144,28 @@ export const useResumeStore = create<ResumeStore>()(
         projects: state.projects.filter(p => p.id !== id)
       })),
       
-      setSkills: (skills) => set({ skills }),
+      addSkill: (category, skill) => set((state) => ({
+        skills: {
+          ...state.skills,
+          [category]: [...state.skills[category], skill]
+        }
+      })),
+      
+      removeSkill: (category, skill) => set((state) => ({
+        skills: {
+          ...state.skills,
+          [category]: state.skills[category].filter(s => s !== skill)
+        }
+      })),
+      
+      suggestSkills: () => set((state) => ({
+        skills: {
+          technical: [...new Set([...state.skills.technical, 'TypeScript', 'React', 'Node.js', 'PostgreSQL', 'GraphQL'])],
+          soft: [...new Set([...state.skills.soft, 'Team Leadership', 'Problem Solving'])],
+          tools: [...new Set([...state.skills.tools, 'Git', 'Docker', 'AWS'])]
+        }
+      })),
+      
       setLinks: (links) => set({ links }),
       setTemplate: (template) => set({ template }),
       
@@ -164,10 +198,15 @@ export const useResumeStore = create<ResumeStore>()(
           id: '1',
           name: 'E-commerce Platform',
           description: 'Built full-stack e-commerce platform with React and Node.js',
-          technologies: 'React, Node.js, PostgreSQL, AWS',
-          link: 'github.com/johndoe/ecommerce'
+          technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
+          liveUrl: 'https://ecommerce-demo.com',
+          githubUrl: 'github.com/johndoe/ecommerce'
         }],
-        skills: 'JavaScript, TypeScript, React, Node.js, Python, SQL, AWS, Docker',
+        skills: {
+          technical: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'SQL'],
+          soft: ['Team Leadership', 'Problem Solving', 'Communication'],
+          tools: ['Git', 'Docker', 'AWS', 'VS Code']
+        },
         links: {
           github: 'github.com/johndoe',
           linkedin: 'linkedin.com/in/johndoe',

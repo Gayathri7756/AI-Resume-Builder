@@ -2,6 +2,8 @@
 
 import { useResumeStore } from '@/lib/resumeStore'
 import BulletGuidance from './BulletGuidance'
+import SkillsSection from './SkillsSection'
+import ProjectsSection from './ProjectsSection'
 import styles from './ResumeForm.module.css'
 
 export default function ResumeForm() {
@@ -10,8 +12,6 @@ export default function ResumeForm() {
     summary,
     education,
     experience,
-    projects,
-    skills,
     links,
     setPersonalInfo,
     setSummary,
@@ -21,10 +21,6 @@ export default function ResumeForm() {
     addExperience,
     updateExperience,
     removeExperience,
-    addProject,
-    updateProject,
-    removeProject,
-    setSkills,
     setLinks
   } = useResumeStore()
 
@@ -221,73 +217,10 @@ export default function ResumeForm() {
       </section>
 
       {/* Projects */}
-      <section className={styles.section}>
-        <h2>Projects</h2>
-        {projects.map((proj) => (
-          <div key={proj.id} className={styles.entry}>
-            <input
-              type="text"
-              placeholder="Project Name"
-              value={proj.name}
-              onChange={(e) => updateProject(proj.id, { name: e.target.value })}
-              className={styles.input}
-            />
-            <textarea
-              placeholder="Description (include impact and metrics)"
-              value={proj.description}
-              onChange={(e) => updateProject(proj.id, { description: e.target.value })}
-              className={styles.textarea}
-              rows={2}
-            />
-            <BulletGuidance text={proj.description} />
-            <input
-              type="text"
-              placeholder="Technologies Used"
-              value={proj.technologies}
-              onChange={(e) => updateProject(proj.id, { technologies: e.target.value })}
-              className={styles.input}
-            />
-            <input
-              type="text"
-              placeholder="Project Link (optional)"
-              value={proj.link}
-              onChange={(e) => updateProject(proj.id, { link: e.target.value })}
-              className={styles.input}
-            />
-            <button
-              onClick={() => removeProject(proj.id)}
-              className={styles.btnRemove}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-        <button
-          onClick={() => addProject({
-            id: Date.now().toString(),
-            name: '',
-            description: '',
-            technologies: '',
-            link: ''
-          })}
-          className={styles.btnAdd}
-        >
-          + Add Project
-        </button>
-      </section>
+      <ProjectsSection />
 
       {/* Skills */}
-      <section className={styles.section}>
-        <h2>Skills</h2>
-        <input
-          type="text"
-          placeholder="JavaScript, Python, React, Node.js, SQL, AWS, Docker, Git..."
-          value={skills}
-          onChange={(e) => setSkills(e.target.value)}
-          className={styles.input}
-        />
-        <p className={styles.hint}>Separate skills with commas (aim for 8+ skills)</p>
-      </section>
+      <SkillsSection />
 
       {/* Links */}
       <section className={styles.section}>

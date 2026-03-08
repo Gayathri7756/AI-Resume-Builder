@@ -1,0 +1,140 @@
+.section {
+  margin-bottom: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  font-family: 'Crimson Text', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.addBtn {
+  padding: 8px 16px;
+  background: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.addBtn:hover {
+  background: #6d0000;
+}
+
+.projectCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.projectHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #fafafa;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.projectHeader:hover {
+  background: #f0f0f0;
+}
+
+.projectTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.expandIcon {
+  font-size: 12px;
+  color: #666;
+}
+
+.projectContent {
+  padding: 24px;
+  background: white;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.charCount {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #8B0000;
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #8B0000;
+}
+
+.deleteBtn {
+  padding: 8px 16px;
+  background: transparent;
+  color: #8B0000;
+  border: 1px solid #8B0000;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+  background: #8B0000;
+  color: white;
+}
