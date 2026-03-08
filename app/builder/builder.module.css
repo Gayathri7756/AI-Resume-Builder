@@ -1,0 +1,103 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-sm) 0;
+}
+
+.navContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.navLinks a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLinks a:hover,
+.navLinks a.active {
+  color: var(--accent);
+}
+
+.toolbar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnSample {
+  padding: 8px 16px;
+  background: var(--text-primary);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.btnSample:hover {
+  background: var(--text-secondary);
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.formPanel {
+  flex: 0 0 50%;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.previewPanel {
+  flex: 0 0 50%;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.previewSticky {
+  position: sticky;
+  top: var(--spacing-lg);
+}
+
+.previewSticky h3 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

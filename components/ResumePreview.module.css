@@ -1,0 +1,137 @@
+.resume {
+  background: white;
+  padding: var(--spacing-xl);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #000;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid #000;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+  color: #000;
+  font-weight: 700;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.contact span::after {
+  content: '|';
+  margin-left: var(--spacing-sm);
+  color: #999;
+}
+
+.contact span:last-child::after {
+  content: '';
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: #333;
+  margin-top: var(--spacing-xs);
+}
+
+.links span::after {
+  content: '|';
+  margin-left: var(--spacing-sm);
+  color: #999;
+}
+
+.links span:last-child::after {
+  content: '';
+}
+
+.section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+}
+
+.section p {
+  margin-bottom: var(--spacing-xs);
+  color: #333;
+}
+
+.item {
+  margin-bottom: var(--spacing-md);
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.itemHeader strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.itemHeader span {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.itemSubheader {
+  display: flex;
+  gap: var(--spacing-sm);
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: var(--spacing-xs);
+}
+
+.itemSubheader span::after {
+  content: '|';
+  margin-left: var(--spacing-sm);
+  color: #999;
+}
+
+.itemSubheader span:last-child::after {
+  content: '';
+}
+
+.link {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+.tech {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}

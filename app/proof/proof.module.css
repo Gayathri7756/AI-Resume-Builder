@@ -1,0 +1,141 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-sm) 0;
+}
+
+.navContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.navLinks a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLinks a:hover,
+.navLinks a.active {
+  color: var(--accent);
+}
+
+.main {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  width: 100%;
+}
+
+.main h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.section {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--accent);
+}
+
+.uploadArea {
+  padding: var(--spacing-xl);
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  text-align: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.uploadArea:hover {
+  border-color: var(--accent);
+}
+
+.inputGroup {
+  margin-bottom: var(--spacing-md);
+}
+
+.inputGroup:last-child {
+  margin-bottom: 0;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btnBuildSystem {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.btnBuildSystem:hover {
+  background: #6B0000;
+}
