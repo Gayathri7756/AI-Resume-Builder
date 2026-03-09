@@ -6,6 +6,7 @@
   font-size: 0.875rem;
   line-height: 1.6;
   color: #000;
+  --accent: var(--resume-accent-color, hsl(168, 60%, 40%));
 }
 
 .empty {
@@ -22,7 +23,7 @@
   text-align: center;
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-md);
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--accent);
 }
 
 .header h1 {
@@ -79,10 +80,10 @@
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
-  color: #000;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 4px;
 }
 

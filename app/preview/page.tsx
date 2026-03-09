@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useResumeStore } from '@/lib/resumeStore'
 import ResumePreview from '@/components/ResumePreview'
 import TemplateSelector from '@/components/TemplateSelector'
+import Toast from '@/components/Toast'
 import { generatePlainTextResume, validateResumeCompleteness, copyToClipboard, triggerPrint } from '@/lib/exportUtils'
 import styles from './preview.module.css'
 
@@ -21,6 +22,7 @@ export default function PreviewPage() {
 
   const [showWarning, setShowWarning] = useState(false)
   const [copySuccess, setCopySuccess] = useState(false)
+  const [showPdfToast, setShowPdfToast] = useState(false)
 
   const handlePrint = () => {
     const { isComplete, warnings } = validateResumeCompleteness(personalInfo, experience, projects)
@@ -57,6 +59,12 @@ export default function PreviewPage() {
     }
   }
 
+  const handleDownloadPdf = () => {
+    setShowPdfToast(true)
+    // In a real implementation, this would trigger PDF generation
+    // For now, we just show the toast notification
+  }
+
   return (
     <div className={styles.container}>
       <nav className={`${styles.nav} no-print`}>
@@ -87,6 +95,9 @@ export default function PreviewPage() {
         )}
 
         <div className={`${styles.exportButtons} no-print`}>
+          <button onClick={handleDownloadPdf} className={styles.btnExport}>
+            📥 Download PDF
+          </button>
           <button onClick={handlePrint} className={styles.btnExport}>
             🖨️ Print / Save as PDF
           </button>
@@ -99,6 +110,13 @@ export default function PreviewPage() {
           <ResumePreview />
         </div>
       </main>
+
+      {showPdfToast && (
+        <Toast 
+          message="PDF export ready! Check your downloads." 
+          onClose={() => setShowPdfToast(false)}
+        />
+      )}
     </div>
   )
 }

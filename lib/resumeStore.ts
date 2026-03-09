@@ -51,6 +51,7 @@ export interface Links {
 }
 
 export type TemplateType = 'classic' | 'modern' | 'minimal'
+export type ColorTheme = 'teal' | 'navy' | 'burgundy' | 'forest' | 'charcoal'
 
 interface ResumeStore {
   personalInfo: PersonalInfo
@@ -61,6 +62,7 @@ interface ResumeStore {
   skills: SkillCategories
   links: Links
   template: TemplateType
+  colorTheme: ColorTheme
   
   setPersonalInfo: (info: PersonalInfo) => void
   setSummary: (summary: string) => void
@@ -78,6 +80,7 @@ interface ResumeStore {
   suggestSkills: () => void
   setLinks: (links: Links) => void
   setTemplate: (template: TemplateType) => void
+  setColorTheme: (color: ColorTheme) => void
   loadSampleData: () => void
   reset: () => void
 }
@@ -103,7 +106,8 @@ const initialState = {
     linkedin: '',
     portfolio: ''
   },
-  template: 'classic' as TemplateType
+  template: 'classic' as TemplateType,
+  colorTheme: 'teal' as ColorTheme
 }
 
 export const useResumeStore = create<ResumeStore>()(
@@ -168,6 +172,7 @@ export const useResumeStore = create<ResumeStore>()(
       
       setLinks: (links) => set({ links }),
       setTemplate: (template) => set({ template }),
+      setColorTheme: (colorTheme) => set({ colorTheme }),
       
       loadSampleData: () => set({
         personalInfo: {

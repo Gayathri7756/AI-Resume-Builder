@@ -5,6 +5,17 @@ import classicStyles from './ResumePreview.module.css'
 import modernStyles from './ResumePreview.modern.module.css'
 import minimalStyles from './ResumePreview.minimal.module.css'
 
+const getColorTheme = (theme: string) => {
+  const colors = {
+    teal: 'hsl(168, 60%, 40%)',
+    navy: 'hsl(220, 60%, 35%)',
+    burgundy: 'hsl(345, 60%, 35%)',
+    forest: 'hsl(150, 50%, 30%)',
+    charcoal: 'hsl(0, 0%, 25%)'
+  }
+  return colors[theme as keyof typeof colors] || colors.teal
+}
+
 export default function ResumePreview() {
   const {
     personalInfo,
@@ -14,13 +25,16 @@ export default function ResumePreview() {
     projects,
     skills,
     links,
-    template
+    template,
+    colorTheme
   } = useResumeStore()
 
   // Select styles based on template
   const styles = template === 'modern' ? modernStyles : 
                  template === 'minimal' ? minimalStyles : 
                  classicStyles
+
+  const accentColor = getColorTheme(colorTheme)
 
   const hasPersonalInfo = personalInfo.name || personalInfo.email || personalInfo.phone || personalInfo.location
   const hasLinks = links.github || links.linkedin || links.portfolio
@@ -35,7 +49,12 @@ export default function ResumePreview() {
   }
 
   return (
-    <div className={styles.resume}>
+    <div 
+      className={styles.resume}
+      style={{ 
+        '--resume-accent-color': accentColor 
+      } as React.CSSProperties}
+    >
       {/* Header */}
       {hasPersonalInfo && (
         <header className={styles.header}>
