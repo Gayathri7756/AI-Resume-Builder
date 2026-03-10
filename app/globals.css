@@ -117,11 +117,10 @@ button:disabled {
     break-inside: avoid;
   }
 
-  /* Remove colors for print */
-  * {
-    color: black !important;
+  /* Keep text readable but remove unnecessary styling */
+  .resume-preview {
     background: white !important;
-    border-color: black !important;
+    border: none !important;
   }
 
   /* Clean spacing */
