@@ -52,7 +52,8 @@ export default function ResumePreview() {
     <div 
       className={styles.resume}
       style={{ 
-        '--resume-accent-color': accentColor 
+        '--resume-accent-color': accentColor,
+        '--accent': accentColor
       } as React.CSSProperties}
     >
       {/* Header */}

@@ -67,7 +67,7 @@ button:disabled {
 /* Print Styles */
 @media print {
   @page {
-    margin: 0.5in;
+    margin: 0.3in;
     size: letter;
   }
 
@@ -89,42 +89,74 @@ button:disabled {
     display: block !important;
   }
 
-  /* Resume styling for print */
+  /* Resume styling for print - compact */
   .resume-preview {
     background: white !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    padding: 0.3in !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  /* Compact spacing */
+  .resume-preview * {
+    line-height: 1.3 !important;
+    margin-bottom: 0.1in !important;
   }
 
   /* Prevent page breaks inside elements */
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
     break-after: avoid;
+    margin-bottom: 0.08in !important;
+    font-size: 0.9rem !important;
   }
 
   p, li {
     page-break-inside: avoid;
     break-inside: avoid;
+    margin-bottom: 0.05in !important;
+    font-size: 0.85rem !important;
   }
 
   /* Ensure sections don't break awkwardly */
   section {
     page-break-inside: avoid;
     break-inside: avoid;
+    margin-bottom: 0.1in !important;
   }
 
-  /* Keep text readable but remove unnecessary styling */
-  .resume-preview {
-    background: white !important;
-    border: none !important;
+  /* Compact item spacing */
+  .item {
+    margin-bottom: 0.08in !important;
+    page-break-inside: avoid;
+  }
+
+  /* Reduce header spacing */
+  header {
+    margin-bottom: 0.1in !important;
+    padding-bottom: 0.05in !important;
+  }
+
+  /* Compact contact info */
+  .contact, .links {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.05in !important;
+  }
+
+  /* Reduce skill pill spacing */
+  .pill {
+    padding: 2px 6px !important;
+    font-size: 0.7rem !important;
+    margin-right: 4px !important;
+    margin-bottom: 4px !important;
   }
 
   /* Clean spacing */
-  .resume-preview * {
-    line-height: 1.5 !important;
+  .resume-preview {
+    background: white !important;
+    border: none !important;
   }
 }
