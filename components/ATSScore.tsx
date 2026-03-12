@@ -6,6 +6,7 @@ import styles from './ATSScore.module.css'
 
 export default function ATSScore() {
   const {
+    personalInfo,
     summary,
     education,
     experience,
@@ -14,7 +15,8 @@ export default function ATSScore() {
     links
   } = useResumeStore()
 
-  const { score, suggestions } = calculateATSScore(
+  const { score, suggestions, status } = calculateATSScore(
+    personalInfo,
     summary,
     education,
     experience,
@@ -23,11 +25,20 @@ export default function ATSScore() {
     links
   )
 
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return '#2D5016' // Green
-    if (score >= 60) return '#8B6914' // Yellow/Gold
+  const getStatusColor = (status: string) => {
+    if (status === 'strong') return '#2D5016' // Green
+    if (status === 'getting-there') return '#8B6914' // Amber
     return '#8B0000' // Red
   }
+
+  const getStatusLabel = (status: string) => {
+    if (status === 'strong') return 'Strong Resume'
+    if (status === 'getting-there') return 'Getting There'
+    return 'Needs Work'
+  }
+
+  const circumference = 2 * Math.PI * 45
+  const strokeDashoffset = circumference - (score / 100) * circumference
 
   return (
     <div className={styles.container}>
@@ -36,25 +47,37 @@ export default function ATSScore() {
       </div>
 
       <div className={styles.scoreDisplay}>
-        <div className={styles.scoreNumber} style={{ color: getScoreColor(score) }}>
+        <svg className={styles.circle} viewBox="0 0 120 120">
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            className={styles.circleBg}
+          />
+          <circle
+            cx="60"
+            cy="60"
+            r="45"
+            className={styles.circleFill}
+            style={{
+              stroke: getStatusColor(status),
+              strokeDashoffset: strokeDashoffset
+            }}
+          />
+        </svg>
+        <div className={styles.scoreNumber} style={{ color: getStatusColor(status) }}>
           {score}
         </div>
         <div className={styles.scoreLabel}>/ 100</div>
       </div>
 
-      <div className={styles.meter}>
-        <div 
-          className={styles.meterFill}
-          style={{ 
-            width: `${score}%`,
-            backgroundColor: getScoreColor(score)
-          }}
-        />
+      <div className={styles.status} style={{ color: getStatusColor(status) }}>
+        {getStatusLabel(status)}
       </div>
 
       {suggestions.length > 0 && (
         <div className={styles.suggestions}>
-          <h4>Top 3 Improvements</h4>
+          <h4>Top Improvements</h4>
           <ul>
             {suggestions.map((suggestion, index) => (
               <li key={index}>{suggestion}</li>

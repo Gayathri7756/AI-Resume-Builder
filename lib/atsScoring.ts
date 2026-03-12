@@ -3,10 +3,22 @@ import { PersonalInfo, Education, Experience, Project, Links, SkillCategories } 
 export interface ATSResult {
   score: number
   suggestions: string[]
+  status: 'needs-work' | 'getting-there' | 'strong'
 }
 
-function countWords(text: string): number {
-  return text.trim().split(/\s+/).filter(Boolean).length
+const ACTION_VERBS = [
+  'built', 'led', 'designed', 'improved', 'created', 'developed', 'implemented',
+  'managed', 'optimized', 'automated', 'launched', 'increased', 'reduced',
+  'achieved', 'delivered', 'established', 'enhanced', 'expanded', 'facilitated',
+  'generated', 'guided', 'initiated', 'innovated', 'integrated', 'introduced',
+  'maximized', 'mentored', 'modernized', 'orchestrated', 'pioneered', 'produced',
+  'promoted', 'proposed', 'redesigned', 'restructured', 'revamped', 'scaled',
+  'spearheaded', 'streamlined', 'strengthened', 'transformed', 'upgraded'
+]
+
+function hasActionVerbs(text: string): boolean {
+  const lowerText = text.toLowerCase()
+  return ACTION_VERBS.some(verb => lowerText.includes(verb))
 }
 
 function hasNumbers(text: string): boolean {
@@ -14,6 +26,7 @@ function hasNumbers(text: string): boolean {
 }
 
 export function calculateATSScore(
+  personalInfo: PersonalInfo,
   summary: string,
   education: Education[],
   experience: Experience[],
@@ -24,75 +37,106 @@ export function calculateATSScore(
   let score = 0
   const suggestions: string[] = []
 
-  // Summary: 40-120 words (+15 points)
-  const summaryWords = countWords(summary)
-  if (summaryWords >= 40 && summaryWords <= 120) {
-    score += 15
-  } else if (summaryWords < 40) {
-    suggestions.push('Write a stronger summary (40–120 words).')
-  } else if (summaryWords > 120) {
-    suggestions.push('Shorten your summary to 40–120 words.')
-  }
-
-  // Projects: at least 2 (+15 points)
-  if (projects.length >= 2) {
-    score += 15
-  } else {
-    suggestions.push('Add at least 2 projects.')
-  }
-
-  // Experience: at least 1 entry (+15 points)
-  if (experience.length >= 1) {
-    score += 15
-  } else {
-    suggestions.push('Add at least 1 work experience entry.')
-  }
-
-  // Skills: at least 8 items (+15 points)
-  const totalSkills = (skills?.technical?.length || 0) + (skills?.soft?.length || 0) + (skills?.tools?.length || 0)
-  if (totalSkills >= 8) {
-    score += 15
-  } else {
-    suggestions.push('Add more skills (target 8+).')
-  }
-
-  // Links: GitHub or LinkedIn (+10 points)
-  if (links.github || links.linkedin) {
+  // +10 if name provided
+  if (personalInfo.name && personalInfo.name.trim()) {
     score += 10
   } else {
-    suggestions.push('Add your GitHub or LinkedIn profile.')
+    suggestions.push('Add your full name (+10 points)')
   }
 
-  // Measurable impact: numbers in experience/projects (+15 points)
-  const hasImpact = 
-    experience.some(exp => hasNumbers(exp.description)) ||
-    projects.some(proj => hasNumbers(proj.description))
-  
-  if (hasImpact) {
-    score += 15
+  // +10 if email provided
+  if (personalInfo.email && personalInfo.email.trim()) {
+    score += 10
   } else {
-    suggestions.push('Add measurable impact (numbers) in bullets.')
+    suggestions.push('Add your email address (+10 points)')
   }
 
-  // Education: complete fields (+15 points)
-  const hasCompleteEducation = education.some(edu => 
-    edu.school && edu.degree && edu.field && edu.startDate && edu.endDate
+  // +5 if phone provided
+  if (personalInfo.phone && personalInfo.phone.trim()) {
+    score += 5
+  } else {
+    suggestions.push('Add your phone number (+5 points)')
+  }
+
+  // +10 if summary > 50 chars
+  if (summary && summary.trim().length > 50) {
+    score += 10
+  } else {
+    suggestions.push('Write a professional summary (50+ characters) (+10 points)')
+  }
+
+  // +10 if summary contains action verbs
+  if (summary && hasActionVerbs(summary)) {
+    score += 10
+  } else if (summary && summary.trim().length > 0) {
+    suggestions.push('Use action verbs in your summary (+10 points)')
+  }
+
+  // +15 if at least 1 experience entry with bullets
+  const hasExperienceWithBullets = experience.some(exp => 
+    exp.position && exp.company && exp.description && exp.description.trim()
   )
-  
-  if (hasCompleteEducation) {
+  if (hasExperienceWithBullets) {
     score += 15
-  } else if (education.length > 0) {
-    suggestions.push('Complete all education fields.')
   } else {
-    suggestions.push('Add your education background.')
+    suggestions.push('Add work experience with descriptions (+15 points)')
+  }
+
+  // +10 if at least 1 education entry
+  const hasEducation = education.some(edu => edu.school && edu.degree)
+  if (hasEducation) {
+    score += 10
+  } else {
+    suggestions.push('Add your education background (+10 points)')
+  }
+
+  // +10 if at least 5 skills added
+  const totalSkills = (skills?.technical?.length || 0) + (skills?.soft?.length || 0) + (skills?.tools?.length || 0)
+  if (totalSkills >= 5) {
+    score += 10
+  } else {
+    suggestions.push(`Add more skills (need ${5 - totalSkills} more) (+10 points)`)
+  }
+
+  // +10 if at least 1 project added
+  const hasProjects = projects.some(proj => proj.name && proj.name.trim())
+  if (hasProjects) {
+    score += 10
+  } else {
+    suggestions.push('Add at least 1 project (+10 points)')
+  }
+
+  // +5 if LinkedIn provided
+  if (links.linkedin && links.linkedin.trim()) {
+    score += 5
+  } else {
+    suggestions.push('Add your LinkedIn profile (+5 points)')
+  }
+
+  // +5 if GitHub provided
+  if (links.github && links.github.trim()) {
+    score += 5
+  } else {
+    suggestions.push('Add your GitHub profile (+5 points)')
   }
 
   // Cap at 100
   score = Math.min(score, 100)
 
+  // Determine status
+  let status: 'needs-work' | 'getting-there' | 'strong'
+  if (score <= 40) {
+    status = 'needs-work'
+  } else if (score <= 70) {
+    status = 'getting-there'
+  } else {
+    status = 'strong'
+  }
+
   // Return top 3 suggestions
   return {
     score,
-    suggestions: suggestions.slice(0, 3)
+    suggestions: suggestions.slice(0, 3),
+    status
   }
 }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useResumeStore } from '@/lib/resumeStore'
 import ResumePreview from '@/components/ResumePreview'
 import TemplateSelector from '@/components/TemplateSelector'
+import ATSScore from '@/components/ATSScore'
 import Toast from '@/components/Toast'
 import { generatePlainTextResume, validateResumeCompleteness, copyToClipboard, triggerPrint } from '@/lib/exportUtils'
 import styles from './preview.module.css'
@@ -106,8 +107,13 @@ export default function PreviewPage() {
           </button>
         </div>
 
-        <div className={`${styles.previewContainer} resume-preview`}>
-          <ResumePreview />
+        <div className={styles.contentWrapper}>
+          <div className={`${styles.previewContainer} resume-preview`}>
+            <ResumePreview />
+          </div>
+          <aside className={`${styles.sidebar} no-print`}>
+            <ATSScore />
+          </aside>
         </div>
       </main>
 
