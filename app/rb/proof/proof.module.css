@@ -20,6 +20,19 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-md);
+}
+
+.shippedBadge {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #2D5016;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .main {
@@ -125,6 +138,48 @@
   border-color: var(--accent);
 }
 
+.inputError {
+  border-color: #8B0000 !important;
+  background: rgba(139, 0, 0, 0.05);
+}
+
+.errorText {
+  font-size: 0.75rem;
+  color: #8B0000;
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+}
+
+.checklistSection {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.stepStatus {
+  margin-top: var(--spacing-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
 .submissionBox {
   background: var(--bg-primary);
   border: 1px solid var(--border);
@@ -204,4 +259,22 @@
   left: 0;
   color: var(--accent);
   font-weight: bold;
+}
+
+.successSection {
+  background: rgba(45, 80, 22, 0.1);
+  border: 2px solid #2D5016;
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.successSection h2 {
+  color: #2D5016;
+  margin-bottom: var(--spacing-sm);
+}
+
+.successSection p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
 }

@@ -14,12 +14,14 @@ interface BuildStore {
   lovableLink: string
   githubLink: string
   deployLink: string
+  checklistPassed: boolean
   
   addArtifact: (stepNumber: number, fileName: string) => void
   hasArtifact: (stepNumber: number) => boolean
   setLovableLink: (link: string) => void
   setGithubLink: (link: string) => void
   setDeployLink: (link: string) => void
+  setChecklistPassed: (passed: boolean) => void
   reset: () => void
 }
 
@@ -30,6 +32,7 @@ export const useBuildStore = create<BuildStore>()(
       lovableLink: '',
       githubLink: '',
       deployLink: '',
+      checklistPassed: false,
       
       addArtifact: (stepNumber, fileName) => {
         set((state) => ({
@@ -47,12 +50,14 @@ export const useBuildStore = create<BuildStore>()(
       setLovableLink: (link) => set({ lovableLink: link }),
       setGithubLink: (link) => set({ githubLink: link }),
       setDeployLink: (link) => set({ deployLink: link }),
+      setChecklistPassed: (passed) => set({ checklistPassed: passed }),
       
       reset: () => set({
         artifacts: [],
         lovableLink: '',
         githubLink: '',
-        deployLink: ''
+        deployLink: '',
+        checklistPassed: false
       })
     }),
     {
